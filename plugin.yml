@@ -1,0 +1,13 @@
+name: HatCraft
+main: com.aegamesi.mc.hatcraft.HatCraft
+version: 1.0.0.1
+authors: [PickleMan, aegamesi, admin.aegamesi@gmail.com]
+description: HatCraft, gives you /hat
+commands:
+   hat:
+      description: Wears the item you're holding on your head.
+      usage: /hat
+permissions:
+   hatcraft.canhat:
+      description: Allows you to /hat
+      default: false
