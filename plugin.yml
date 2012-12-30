@@ -7,7 +7,16 @@ commands:
    hat:
       description: Wears the item you're holding on your head.
       usage: /hat
+   backpack:
+      description: Opens an additional inventory for storage
+      usage: /backpack
 permissions:
    hatcraft.canhat:
       description: Allows you to /hat
+      default: false
+   hatcraft.backpack:
+      description: Allows you to /backpack
+      default: false
+   hatcraft.backpack.other:
+      description: Allows you to /backpack <player>
       default: false

@@ -40,6 +40,26 @@ public class CommandHandler implements CommandExecutor {
 			sender.sendMessage("Successfully wore hat!");
 			return true;
 		}
+		if (cmd.getName().equalsIgnoreCase("backpack")) {
+			if (!isPlayer) {
+				sender.sendMessage("You can't use /backpack from the console!");
+				return true;
+			}
+			if (!sender.hasPermission("hatcraft.backpack")) {
+				sender.sendMessage("You don't have permission!");
+				return true;
+			}
+			if (args.length > 0 && !sender.hasPermission("hatcraft.backpack.other")) {
+				sender.sendMessage("You don't have permission to view the backpack of other players!");
+				return true;
+			}
+			String player = args.length > 0 ? args[0] : sender.getName();
+			String configKey = "backpack." + player.toLowerCase();
+			ItemStack[] inv = plugin.getConfig().contains(configKey) ? plugin.getConfig().getList(configKey).toArray(new ItemStack[0]) : null;
+			BackpackHolder bph = new BackpackHolder(plugin.getConfig().getInt("backpack-size"), player, inv);
+			p.openInventory(bph.getInventory());
+			return true;
+		}
 		return false;
 	}
 }
